@@ -6,14 +6,17 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
 import BlogPost from './pages/BlogPost';
 
+// Layout component to conditionally render Navbar
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const isBlogPost = location.pathname.startsWith('/blog/');
 
   return (
-    <div className="min-h-screen bg-black text-gray-100">
+    <div className="min-h-screen bg-black text-gray-100 w-full overflow-x-hidden">
       {!isBlogPost && <Navbar />}
-      {children}
+      <main className="w-full overflow-x-hidden">
+        {children}
+      </main>
       <Footer />
       <ScrollToTop />
     </div>

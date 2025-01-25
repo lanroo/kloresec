@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { posts } from '../../data/posts';
 import { Link } from 'react-router-dom';
-import { Clock, ArrowRight } from 'lucide-react';
+import { Clock, ArrowDown, ArrowUp } from 'lucide-react';
+
+const POSTS_PER_PAGE = 4;
 
 const BlogSection: React.FC = () => {
+  const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
+
+  const showMorePosts = () => {
+    setVisiblePosts(prev => Math.min(prev + POSTS_PER_PAGE, posts.length));
+  };
+
+  const showLessPosts = () => {
+    setVisiblePosts(POSTS_PER_PAGE);
+    document.querySelector('#latest-news')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
-      <div className="text-center mb-16">
+      <div id="latest-news" className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-4" data-searchable>
           Latest Cybersecurity News
         </h2>
@@ -16,7 +29,7 @@ const BlogSection: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {posts.map(post => (
+        {posts.slice(0, visiblePosts).map(post => (
           <Link 
             key={post.id} 
             to={`/blog/${post.slug}`}
@@ -56,6 +69,36 @@ const BlogSection: React.FC = () => {
             </article>
           </Link>
         ))}
+      </div>
+
+      <div className="flex justify-center mt-12">
+        {visiblePosts < posts.length ? (
+          <button
+            onClick={showMorePosts}
+            className="group relative inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm 
+              border border-green-400/20 px-8 py-3 rounded-lg font-bold
+              hover:border-green-400/40 hover:bg-black/60 transition-all duration-300
+              before:absolute before:inset-0 before:bg-green-400/10 before:rounded-lg
+              before:transition-transform before:duration-300 before:scale-x-0 hover:before:scale-x-100
+              before:origin-left"
+          >
+            <span className="relative">Show More Posts</span>
+            <ArrowDown className="w-5 h-5 relative transition-transform group-hover:translate-y-1" />
+          </button>
+        ) : (
+          <button
+            onClick={showLessPosts}
+            className="group relative inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm 
+              border border-green-400/20 px-8 py-3 rounded-lg font-bold
+              hover:border-green-400/40 hover:bg-black/60 transition-all duration-300
+              before:absolute before:inset-0 before:bg-green-400/10 before:rounded-lg
+              before:transition-transform before:duration-300 before:scale-x-0 hover:before:scale-x-100
+              before:origin-left"
+          >
+            <span className="relative">Show Less</span>
+            <ArrowUp className="w-5 h-5 relative transition-transform group-hover:-translate-y-1" />
+          </button>
+        )}
       </div>
     </section>
   );

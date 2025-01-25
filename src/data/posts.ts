@@ -123,7 +123,107 @@ export const posts: Post[] = [
       <h2>Real-world Examples</h2>
       <p>Analysis of recent XSS vulnerabilities found in major applications...</p>
     `
+  },
+  {
+    id: 5,
+    title: "Advanced Active Directory Exploitation Techniques",
+    slug: "advanced-ad-exploitation",
+    date: "May 15, 2024",
+    readTime: "15 min read",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80",
+    tags: ["Active Directory", "Exploitation"],
+    excerpt: "Deep dive into advanced Active Directory exploitation techniques and mitigation strategies...",
+    content: `
+      <h2>Understanding Active Directory Security</h2>
+      <p>A comprehensive overview of Active Directory security mechanisms and common misconfigurations...</p>
+
+      <h2>Attack Vectors</h2>
+      <ul>
+        <li>Kerberoasting</li>
+        <li>Pass-the-Hash</li>
+        <li>Golden Ticket</li>
+        <li>Silver Ticket</li>
+      </ul>
+
+      <h2>Detection and Prevention</h2>
+      <p>Implementing effective monitoring and prevention strategies...</p>
+    `
+  },
+  {
+    id: 6,
+    title: "Cloud Security: AWS Penetration Testing Guide",
+    slug: "aws-pentest-guide",
+    date: "May 1, 2024",
+    readTime: "18 min read",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
+    tags: ["Cloud", "AWS", "Pentest"],
+    excerpt: "A comprehensive guide to performing security assessments in AWS environments...",
+    content: `
+      <h2>AWS Security Fundamentals</h2>
+      <p>Understanding AWS security models and common misconfigurations...</p>
+
+      <h2>Testing Methodology</h2>
+      <ul>
+        <li>IAM privilege escalation</li>
+        <li>S3 bucket enumeration</li>
+        <li>Lambda function analysis</li>
+        <li>Network security groups</li>
+      </ul>
+
+      <h2>Best Practices</h2>
+      <p>Implementing secure configurations and monitoring solutions...</p>
+    `
+  },
+  {
+    id: 7,
+    title: "Mobile App Security Testing Methodology",
+    slug: "mobile-security-testing",
+    date: "Apr 20, 2024",
+    readTime: "14 min read",
+    image: "https://images.unsplash.com/photo-1522251670181-320150ad6dab?auto=format&fit=crop&q=80",
+    tags: ["Mobile", "Android", "iOS"],
+    excerpt: "Comprehensive methodology for testing mobile application security...",
+    content: `
+      <h2>Mobile Security Fundamentals</h2>
+      <p>Understanding mobile app security models and attack surfaces...</p>
+
+      <h2>Testing Areas</h2>
+      <ul>
+        <li>Data storage</li>
+        <li>Network communication</li>
+        <li>Authentication mechanisms</li>
+        <li>Binary protections</li>
+      </ul>
+
+      <h2>Tools and Techniques</h2>
+      <p>Essential tools and methodologies for mobile app security testing...</p>
+    `
+  },
+  {
+    id: 8,
+    title: "Hardware Hacking: IoT Device Security",
+    slug: "hardware-hacking-iot",
+    date: "Apr 10, 2024",
+    readTime: "16 min read",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
+    tags: ["Hardware", "IoT", "Exploitation"],
+    excerpt: "Exploring hardware security vulnerabilities in IoT devices...",
+    content: `
+      <h2>IoT Security Landscape</h2>
+      <p>Understanding the unique challenges of IoT device security...</p>
+
+      <h2>Common Vulnerabilities</h2>
+      <ul>
+        <li>UART/JTAG debugging</li>
+        <li>Firmware extraction</li>
+        <li>Radio communication</li>
+        <li>Physical security</li>
+      </ul>
+
+      <h2>Security Recommendations</h2>
+      <p>Best practices for securing IoT devices and infrastructure...</p>
+    `
   }
 ];
 
-export const tags = ["Bug Bounty", "Cert", "CVE", "Enumeration", "Exploitation", "Web"];
+export const tags = ["Active Directory", "Android", "AWS", "Bug Bounty", "Cert", "Cloud", "CVE", "Enumeration", "Exploitation", "Hardware", "iOS", "IoT", "Mobile", "Pentest", "Web"];

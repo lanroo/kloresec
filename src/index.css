@@ -3,9 +3,50 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply overflow-x-hidden;
+    width: 100%;
+  }
+  
   body {
-    @apply bg-black text-gray-100;
-    font-family: 'JetBrains Mono', monospace;
+    @apply bg-black text-gray-100 overflow-x-hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    @apply overflow-x-hidden;
+    width: 100%;
+  }
+}
+
+.container {
+  @apply w-full px-4 mx-auto overflow-visible;
+  max-width: 100%;
+}
+
+@screen sm {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@screen md {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@screen lg {
+  .container {
+  max-width: 1024px;
+  }
+}
+
+@screen xl {
+  .container {
+    max-width: 1280px;
   }
 }
 
