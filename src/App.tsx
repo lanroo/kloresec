@@ -8,7 +8,7 @@ import {
 import { SearchProvider } from "./contexts/SearchContext";
 import { TagProvider } from "./contexts/TagContext";
 import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+import Footer from "./components/Footer";
 import ScrollToTop from "./components/layout/ScrollToTop";
 import Home from "./pages/Home";
 import BlogPost from "./pages/BlogPost";

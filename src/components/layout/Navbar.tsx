@@ -20,6 +20,11 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = "mailto:lucasteste@gmail.com";
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -57,7 +62,8 @@ const Navbar: React.FC = () => {
               About
             </Link>
             <a
-              href="#contact"
+              href="#"
+              onClick={handleContact}
               className="hover:text-green-400 transition-colors"
             >
               Contact
@@ -141,9 +147,12 @@ const Navbar: React.FC = () => {
                 About
               </Link>
               <a
-                href="#contact"
+                href="#"
+                onClick={(e) => {
+                  handleContact(e);
+                  setIsMobileMenuOpen(false);
+                }}
                 className="block hover:text-green-400 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </a>
