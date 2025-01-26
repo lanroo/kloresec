@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { SearchProvider } from "./contexts/SearchContext";
 import { TagProvider } from "./contexts/TagContext";
+import { LoadingProvider } from "./contexts/LoadingContext";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/layout/ScrollToTop";
@@ -37,18 +38,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const App: React.FC = () => {
   return (
     <Router>
-      <TagProvider>
-        <SearchProvider>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/tag/:tag" element={<TagPosts />} />
-            </Routes>
-          </Layout>
-        </SearchProvider>
-      </TagProvider>
+      <LoadingProvider>
+        <TagProvider>
+          <SearchProvider>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/tag/:tag" element={<TagPosts />} />
+              </Routes>
+            </Layout>
+          </SearchProvider>
+        </TagProvider>
+      </LoadingProvider>
     </Router>
   );
 };

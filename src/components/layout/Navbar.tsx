@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Terminal, Search, X, Menu } from "lucide-react";
+import { Binary, Search, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useSearch } from "../../contexts/useSearch";
 import SearchResults from "../ui/SearchResults";
@@ -37,9 +37,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className="flex items-center gap-2 hover:text-green-400 transition-colors"
+            className="flex items-center gap-2 hover:text-green-400 transition-colors group"
           >
-            <Terminal className="w-6 h-6 text-green-400" />
+            <Binary className="w-6 h-6 text-green-400 transform group-hover:scale-110 transition-transform" />
             <span className="text-xl font-bold">KLORE SEC</span>
           </Link>
 

@@ -13,3 +13,8 @@ export interface SearchResult {
   tags?: string[];
   excerpt?: string;
 }
+
+export interface LoadingContextType {
+  isLoading: boolean;
+  setIsLoading: (loading: boolean) => void;
+}
