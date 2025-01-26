@@ -6,7 +6,6 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
 import BlogPost from './pages/BlogPost';
 
-// Layout component to conditionally render Navbar
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const isBlogPost = location.pathname.startsWith('/blog/');

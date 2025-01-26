@@ -21,7 +21,7 @@ const MatrixRain: React.FC = () => {
     updateCanvasSize();
 
     const characters = '01';
-    const fontSize = 14;
+    const fontSize = 18;
     const columns = Math.ceil(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(0).map(() => Math.random() * -100);
 
