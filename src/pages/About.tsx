@@ -70,14 +70,14 @@ const About: React.FC = () => {
       {/* Content */}
       <div className="relative z-[1]">
         {/* Hero Section with terminal style */}
-        <section className="relative min-h-screen flex items-center justify-center">
+        <section className="relative min-h-screen flex items-center justify-center pt-20 sm:pt-0">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="bg-black/40 border border-green-400/20 p-8 rounded-lg backdrop-blur-md"
+                className="bg-black/40 border border-green-400/20 p-4 sm:p-8 rounded-lg backdrop-blur-md"
               >
                 <div className="flex items-center gap-2 mb-4 text-green-400">
                   <Terminal className="w-5 h-5" />
