@@ -127,53 +127,40 @@ const BlogPost: React.FC = () => {
     .slice(0, 3);
 
   const handleShare = (platform: string) => {
-    // Construir a URL completa do post atual
+    // Construir a URL completa do post atual sem encoding inicial
     const postUrl = `${siteConfig.url}/blog/${post.slug}`;
+    const title = post.title;
+    const description = post.excerpt || "";
 
-    // Texto personalizado para cada post
-    const shareText = `${post.title} - ${post.excerpt}`;
-
-    // Dados específicos para compartilhamento
-    const shareData = {
-      url: postUrl,
-      title: post.title,
-      text: shareText,
-      summary: post.excerpt,
-      hashtags: post.tags.map((tag) => tag.replace(/\s+/g, "")).join(","),
-      via: "kloresec",
-    };
-
-    // Texto para copiar
-    const copyText = `${shareData.title}\n${shareData.url}`;
-
-    let linkedinUrl: URL;
+    // Preparar URLs para cada plataforma
+    const twitterUrl = new URL("https://twitter.com/intent/tweet");
+    const linkedinUrl = new URL("https://www.linkedin.com/shareArticle");
+    const facebookUrl = new URL("https://www.facebook.com/sharer.php");
 
     switch (platform) {
       case "twitter":
-        window.open(
-          `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-            shareText
-          )}&url=${encodeURIComponent(shareData.url)}&hashtags=${
-            shareData.hashtags
-          }&via=${shareData.via}`
-        );
+        twitterUrl.searchParams.append("text", title);
+        twitterUrl.searchParams.append("url", postUrl);
+        twitterUrl.searchParams.append("via", "kloresec");
+        window.open(twitterUrl.toString(), "_blank", "noopener,noreferrer");
         break;
+
       case "linkedin":
-        linkedinUrl = new URL(
-          "https://www.linkedin.com/sharing/share-offsite/"
-        );
-        linkedinUrl.searchParams.append("url", shareData.url);
+        linkedinUrl.searchParams.append("mini", "true");
+        linkedinUrl.searchParams.append("url", postUrl);
+        linkedinUrl.searchParams.append("title", title);
+        linkedinUrl.searchParams.append("summary", description);
+        linkedinUrl.searchParams.append("source", siteConfig.name);
         window.open(linkedinUrl.toString(), "_blank", "noopener,noreferrer");
         break;
+
       case "facebook":
-        window.open(
-          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-            shareData.url
-          )}&quote=${encodeURIComponent(shareText)}`
-        );
+        facebookUrl.searchParams.append("u", postUrl);
+        window.open(facebookUrl.toString(), "_blank", "noopener,noreferrer");
         break;
+
       case "copy":
-        navigator.clipboard.writeText(copyText);
+        navigator.clipboard.writeText(`${title}\n${postUrl}`);
         break;
     }
   };
