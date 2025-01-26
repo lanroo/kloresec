@@ -1,34 +1,33 @@
-import React, { useState } from 'react';
-import { posts, tags } from '../../data/posts';
-import { Link } from 'react-router-dom';
-import { Clock, ArrowDown, ArrowUp } from 'lucide-react';
+import React, { useState } from "react";
+import { posts, tags } from "../../data/posts";
+import { Link } from "react-router-dom";
+import { Clock, ArrowDown, ArrowUp } from "lucide-react";
+import { useTag } from "../../hooks/useTag";
 
 const POSTS_PER_PAGE = 4;
 
 const BlogSection: React.FC = () => {
   const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
+  const { filterByTag } = useTag();
 
   const showMorePosts = () => {
-    setVisiblePosts(prev => Math.min(prev + POSTS_PER_PAGE, posts.length));
+    setVisiblePosts((prev) => Math.min(prev + POSTS_PER_PAGE, posts.length));
   };
 
   const showLessPosts = () => {
     setVisiblePosts(POSTS_PER_PAGE);
-    document.querySelector('#latest-news')?.scrollIntoView({ behavior: 'smooth' });
+    document
+      .querySelector("#latest-news")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {posts.slice(0, visiblePosts).map(post => (
-            <Link
-              key={post.id}
-              to={`/blog/${post.slug}`}
-              className="group"
-            >
+          {posts.slice(0, visiblePosts).map((post) => (
+            <Link key={post.id} to={`/blog/${post.slug}`} className="group">
               <article className="bg-black/40 backdrop-blur-sm border border-green-400/20 rounded-lg overflow-hidden transition-all duration-300 hover:border-green-400/40 hover:scale-[1.02]">
-              
                 <div className="relative h-48 md:h-64">
                   <img
                     src={post.image}
@@ -52,21 +51,31 @@ const BlogSection: React.FC = () => {
                         alt={post.author.name}
                         className="w-8 h-8 rounded-full border border-gray-600 object-cover"
                       />
-                      <span className="text-sm text-gray-300">{post.author.name}</span>
+                      <span className="text-sm text-gray-300">
+                        {post.author.name}
+                      </span>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors">
+                    <h3
+                      className="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors"
+                      data-searchable
+                    >
                       {post.title}
                     </h3>
 
                     <div className="flex flex-wrap gap-2">
-                      {post.tags.map(tag => (
-                        <span
+                      {post.tags.map((tag) => (
+                        <button
                           key={tag}
-                          className="text-xs px-2 py-1 bg-green-400/10 rounded-full border border-green-400/20"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            filterByTag(tag);
+                          }}
+                          className="text-xs px-2 py-1 bg-green-400/10 rounded-full border border-green-400/20 hover:border-green-400/40 transition-colors"
+                          data-searchable
                         >
                           {tag}
-                        </span>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -113,14 +122,17 @@ const BlogSection: React.FC = () => {
           {/* Latest Posts */}
           <div>
             <div className="flex items-center gap-2 mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-green-400 text-black px-4 py-1 rounded-md">
-                Latest
-              </h2>
-              <span className="text-2xl md:text-3xl font-bold">Posts</span>
+              <div className="relative">
+                <span className="absolute -inset-1 bg-green-400/30 blur-sm rounded-lg"></span>
+                <h2 className="relative bg-black px-4 py-1 text-2xl md:text-3xl font-bold border border-green-400/50 rounded-lg">
+                  Latest
+                  <span className="text-green-400 ml-2">Posts</span>
+                </h2>
+              </div>
             </div>
 
             <div className="space-y-6">
-              {posts.slice(0, 2).map(post => (
+              {posts.slice(0, 2).map((post) => (
                 <Link
                   key={post.id}
                   to={`/blog/${post.slug}`}
@@ -138,7 +150,10 @@ const BlogSection: React.FC = () => {
                       <span>{post.readTime}</span>
                       <span>{post.date}</span>
                     </div>
-                    <h3 className="font-mono text-lg group-hover:text-green-400 transition-colors">
+                    <h3
+                      className="font-mono text-lg group-hover:text-green-400 transition-colors"
+                      data-searchable
+                    >
                       {post.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2">
@@ -147,7 +162,9 @@ const BlogSection: React.FC = () => {
                         alt={post.author.name}
                         className="w-5 h-5 rounded-full"
                       />
-                      <span className="text-sm text-gray-400">{post.author.name}</span>
+                      <span className="text-sm text-gray-400">
+                        {post.author.name}
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -158,18 +175,23 @@ const BlogSection: React.FC = () => {
           {/* Explore Tags */}
           <div>
             <div className="flex items-center gap-2 mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold bg-green-400 text-black px-4 py-1 rounded-md">
-                Explore
-              </h2>
-              <span className="text-2xl md:text-3xl font-bold">Tags</span>
+              <div className="relative">
+                <span className="absolute -inset-1 bg-green-400/30 blur-sm rounded-lg"></span>
+                <h2 className="relative bg-black px-4 py-1 text-2xl md:text-3xl font-bold border border-green-400/50 rounded-lg">
+                  Explore
+                  <span className="text-green-400 ml-2">Tags</span>
+                </h2>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {tags.map(tag => (
+              {tags.map((tag) => (
                 <button
                   key={tag}
+                  onClick={() => filterByTag(tag)}
                   className="px-4 py-2 rounded-full text-sm bg-gray-800/50 hover:bg-gray-700/50 
                     border border-green-400/20 hover:border-green-400/40 transition-colors"
+                  data-searchable
                 >
                   {tag}
                 </button>

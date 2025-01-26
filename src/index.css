@@ -6,9 +6,9 @@
   html {
     @apply overflow-x-hidden;
     width: 100%;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
   }
-  
+
   body {
     @apply bg-black text-gray-100 overflow-x-hidden;
     width: 100%;
@@ -19,6 +19,29 @@
   #root {
     @apply overflow-x-hidden;
     width: 100%;
+  }
+
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-green-400/80 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-green-400;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4ade80 #000000;
   }
 }
 
