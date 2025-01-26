@@ -131,6 +131,12 @@ const BlogPost: React.FC = () => {
     const postUrl = `${siteConfig.url}/blog/${post.slug}`;
     const title = post.title;
     const description = post.excerpt || "";
+    const hashtags = post.tags.map((tag) => tag.replace(/\s+/g, "")).join(" #");
+
+    // Preparar mensagens personalizadas para cada plataforma
+    const twitterText = `🔍 ${title}\n\n${description}\n\n#${hashtags} #cybersecurity #pentest`;
+    const linkedinText = `🔐 Novo artigo sobre ${title}\n\n${description}\n\nConfira mais detalhes sobre este estudo de caso em profundidade.`;
+    const facebookText = `📢 ${title}\n\n${description}\n\nAcesse o artigo completo para aprender mais sobre este caso interessante de segurança.`;
 
     // Preparar URLs para cada plataforma
     const twitterUrl = new URL("https://twitter.com/intent/tweet");
@@ -139,7 +145,7 @@ const BlogPost: React.FC = () => {
 
     switch (platform) {
       case "twitter":
-        twitterUrl.searchParams.append("text", title);
+        twitterUrl.searchParams.append("text", twitterText);
         twitterUrl.searchParams.append("url", postUrl);
         twitterUrl.searchParams.append("via", "kloresec");
         window.open(twitterUrl.toString(), "_blank", "noopener,noreferrer");
@@ -149,18 +155,21 @@ const BlogPost: React.FC = () => {
         linkedinUrl.searchParams.append("mini", "true");
         linkedinUrl.searchParams.append("url", postUrl);
         linkedinUrl.searchParams.append("title", title);
-        linkedinUrl.searchParams.append("summary", description);
+        linkedinUrl.searchParams.append("summary", linkedinText);
         linkedinUrl.searchParams.append("source", siteConfig.name);
         window.open(linkedinUrl.toString(), "_blank", "noopener,noreferrer");
         break;
 
       case "facebook":
         facebookUrl.searchParams.append("u", postUrl);
+        facebookUrl.searchParams.append("quote", facebookText);
         window.open(facebookUrl.toString(), "_blank", "noopener,noreferrer");
         break;
 
       case "copy":
-        navigator.clipboard.writeText(`${title}\n${postUrl}`);
+        navigator.clipboard.writeText(
+          `${title}\n\n${description}\n\n${postUrl}`
+        );
         break;
     }
   };
