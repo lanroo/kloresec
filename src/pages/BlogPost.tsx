@@ -146,6 +146,8 @@ const BlogPost: React.FC = () => {
     // Texto para copiar
     const copyText = `${shareData.title}\n${shareData.url}`;
 
+    let linkedinUrl: URL;
+
     switch (platform) {
       case "twitter":
         window.open(
@@ -157,15 +159,11 @@ const BlogPost: React.FC = () => {
         );
         break;
       case "linkedin":
-        window.open(
-          `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-            shareData.url
-          )}&title=${encodeURIComponent(
-            shareData.title
-          )}&summary=${encodeURIComponent(
-            shareData.summary
-          )}&source=${encodeURIComponent(siteConfig.name)}`
+        linkedinUrl = new URL(
+          "https://www.linkedin.com/sharing/share-offsite/"
         );
+        linkedinUrl.searchParams.append("url", shareData.url);
+        window.open(linkedinUrl.toString(), "_blank", "noopener,noreferrer");
         break;
       case "facebook":
         window.open(
