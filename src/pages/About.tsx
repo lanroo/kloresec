@@ -127,7 +127,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Skills Section */}
-        <section className="py-24 relative">
+        <section className="py-12 relative">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -238,7 +238,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Projects Section */}
-        <section className="py-24 relative">
+        <section className="py-12 relative">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -302,7 +302,7 @@ const About: React.FC = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-24 relative">
+        <section className="py-12 relative">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
