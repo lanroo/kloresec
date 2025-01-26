@@ -48,28 +48,6 @@ src/
   - Preto: `#000000` (bg-black)
   - Cinza: `#f3f4f6` (text-gray-100)
 
-- Classes Tailwind comuns:
-  ```css
-  .container /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  /* Container responsivo */
-  .prose /* Estilização de conteúdo markdown */
-  .animate-pulse; /* Animações */
-  ```
-
 ## 📝 Modificando Conteúdo
 
 ### Posts
