@@ -35,10 +35,10 @@ const BlogSection: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/75"></div>
-                  <div className="absolute bottom-0 left-0 p-6">
-                    <div className="flex items-center gap-4 mb-2 text-sm text-gray-300">
+                  <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full">
+                    <div className="flex items-center gap-4 mb-2 text-xs md:text-sm text-gray-300">
                       <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3 h-3 md:w-4 md:h-4" />
                         {post.readTime}
                       </span>
                       <span>{post.date}</span>
@@ -49,21 +49,21 @@ const BlogSection: React.FC = () => {
                       <img
                         src={post.author.avatar}
                         alt={post.author.name}
-                        className="w-8 h-8 rounded-full border border-gray-600 object-cover"
+                        className="w-6 h-6 md:w-8 md:h-8 rounded-full border border-gray-600 object-cover"
                       />
-                      <span className="text-sm text-gray-300">
+                      <span className="text-xs md:text-sm text-gray-300">
                         {post.author.name}
                       </span>
                     </div>
 
                     <h3
-                      className="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors"
+                      className="text-base md:text-xl font-bold mb-2 group-hover:text-green-400 transition-colors line-clamp-2"
                       data-searchable
                     >
                       {post.title}
                     </h3>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 md:gap-2">
                       {post.tags.map((tag) => (
                         <button
                           key={tag}
@@ -71,7 +71,7 @@ const BlogSection: React.FC = () => {
                             e.preventDefault();
                             filterByTag(tag);
                           }}
-                          className="text-xs px-2 py-1 bg-green-400/10 rounded-full border border-green-400/20 hover:border-green-400/40 transition-colors"
+                          className="text-[10px] md:text-xs px-1.5 md:px-2 py-0.5 md:py-1 bg-green-400/10 rounded-full border border-green-400/20 hover:border-green-400/40 transition-colors"
                           data-searchable
                         >
                           {tag}
