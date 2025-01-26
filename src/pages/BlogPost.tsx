@@ -135,13 +135,11 @@ const BlogPost: React.FC = () => {
 
     // Preparar mensagens personalizadas para cada plataforma
     const twitterText = `🔍 ${title}\n\n${description}\n\n#${hashtags} #cybersecurity #pentest`;
-    const linkedinText = `🔐 Novo artigo sobre ${title}\n\n${description}\n\nConfira mais detalhes sobre este estudo de caso em profundidade.`;
-    const facebookText = `📢 ${title}\n\n${description}\n\nAcesse o artigo completo para aprender mais sobre este caso interessante de segurança.`;
+    const linkedinText = `🔐 Novo artigo sobre ${title}\n\n${description}\n\nConfira mais detalhes sobre este estudo de caso em profundidade. #${hashtags} #cybersecurity #pentest`;
+    const facebookText = `📢 ${title}\n\n${description}\n\nAcesse o artigo completo para aprender mais sobre este caso interessante de segurança.\n\n#${hashtags} #cybersecurity #pentest`;
 
     // Preparar URLs para cada plataforma
     const twitterUrl = new URL("https://twitter.com/intent/tweet");
-    const linkedinUrl = new URL("https://www.linkedin.com/shareArticle");
-    const facebookUrl = new URL("https://www.facebook.com/sharer.php");
 
     switch (platform) {
       case "twitter":
@@ -152,23 +150,30 @@ const BlogPost: React.FC = () => {
         break;
 
       case "linkedin":
-        linkedinUrl.searchParams.append("mini", "true");
-        linkedinUrl.searchParams.append("url", postUrl);
-        linkedinUrl.searchParams.append("title", title);
-        linkedinUrl.searchParams.append("summary", linkedinText);
-        linkedinUrl.searchParams.append("source", siteConfig.name);
-        window.open(linkedinUrl.toString(), "_blank", "noopener,noreferrer");
+        window.open(
+          `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+            postUrl
+          )}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(
+            linkedinText
+          )}`,
+          "_blank",
+          "noopener,noreferrer"
+        );
         break;
 
       case "facebook":
-        facebookUrl.searchParams.append("u", postUrl);
-        facebookUrl.searchParams.append("quote", facebookText);
-        window.open(facebookUrl.toString(), "_blank", "noopener,noreferrer");
+        window.open(
+          `https://www.facebook.com/sharer.php?u=${encodeURIComponent(
+            postUrl
+          )}&quote=${encodeURIComponent(facebookText)}`,
+          "_blank",
+          "noopener,noreferrer"
+        );
         break;
 
       case "copy":
         navigator.clipboard.writeText(
-          `${title}\n\n${description}\n\n${postUrl}`
+          `${title}\n\n${description}\n\n#${hashtags} #cybersecurity #pentest\n\n${postUrl}`
         );
         break;
     }
@@ -220,7 +225,14 @@ const BlogPost: React.FC = () => {
                 className="w-12 h-12 rounded-full border-2 border-green-400/20"
               />
               <div>
-                <h4 className="font-bold text-green-400">{post.author.name}</h4>
+                <a
+                  href="https://www.linkedin.com/in/lucas-d-86730b227/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-green-400 hover:text-green-500 transition-colors"
+                >
+                  {post.author.name}
+                </a>
                 <p className="text-gray-400 text-sm">CEO</p>
               </div>
             </div>
