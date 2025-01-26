@@ -34,7 +34,7 @@ export const posts: Post[] = [
     readTime: "6 min read",
     image:
       "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&q=80",
-    tags: ["Pentest", "Exploitation", "Network Security"],
+    tags: ["Pentest", "Exploitation", "Security"],
     excerpt:
       "A detailed pentest guide on exploiting misconfigured services to gain unauthorized internal network access...",
     content: `
