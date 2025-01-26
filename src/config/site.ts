@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Klore Security",
-  url: "https://klore-project.vercel.app",
+  url: "https://kloresec.vercel.app",
   description:
     "Cybersecurity research, penetration testing, and red team operations.",
   defaultImage:
