@@ -23,25 +23,28 @@
 
   /* Scrollbar Styles */
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-black/50;
+    @apply bg-transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-green-400/80 rounded-full;
+    @apply bg-green-400/30;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-green-400;
+    @apply bg-green-400/50;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
   }
 
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #4ade80 #000000;
+    scrollbar-color: rgba(74, 222, 128, 0.3) transparent;
   }
 }
 
