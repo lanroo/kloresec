@@ -11,20 +11,32 @@ export interface Post {
   author: {
     name: string;
     avatar: string;
+    twitter?: string;
+    role?: string;
   };
 }
 
+const author = {
+  name: "Lucas de Souza",
+  avatar:
+    "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc",
+  twitter: "lucas",
+  role: "CEO",
+};
 
 export const posts: Post[] = [
   {
     id: 1,
-    title: "Pentest: Exploiting Misconfigured Services for Internal Network Access",
+    title:
+      "Pentest: Exploiting Misconfigured Services for Internal Network Access",
     slug: "pentest-exploiting-misconfigured-services",
     date: "Nov 6, 2024",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&q=80",
     tags: ["Pentest", "Exploitation", "Network Security"],
-    excerpt: "A detailed pentest guide on exploiting misconfigured services to gain unauthorized internal network access...",
+    excerpt:
+      "A detailed pentest guide on exploiting misconfigured services to gain unauthorized internal network access...",
     content: `
       <h2 id="introduction">Introduction</h2>
       <p>Pentesting internal networks requires a deep understanding of misconfigured services that can be leveraged for access.
@@ -66,20 +78,19 @@ export const posts: Post[] = [
         <li>Harden Active Directory to prevent Kerberoasting and PtH attacks</li>
       </ul>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 2,
-    title: "From Reconnaissance to Privilege Escalation: The Pentester’s Guide",
+    title: "From Reconnaissance to Privilege Escalation: The Pentester's Guide",
     slug: "pentester-recon-to-privilege-escalation",
     date: "Jul 15, 2024",
     readTime: "8 min read",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
     tags: ["Pentest", "Recon", "Privilege Escalation"],
-    excerpt: "A structured approach to performing reconnaissance and escalating privileges during a penetration test...",
+    excerpt:
+      "A structured approach to performing reconnaissance and escalating privileges during a penetration test...",
     content: `
       <h2 id="reconnaissance">Phase 1: Reconnaissance</h2>
       <p>The first step in any penetration test is gathering information about the target environment:</p>
@@ -121,10 +132,7 @@ export const posts: Post[] = [
         <li>Use endpoint detection & response (EDR) solutions</li>
       </ul>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 3,
@@ -132,9 +140,11 @@ export const posts: Post[] = [
     slug: "oscp-journey",
     date: "Jun 3, 2024",
     readTime: "12 min read",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80",
     tags: ["Cert", "Enumeration"],
-    excerpt: "A personal account of preparing for and passing the OSCP certification...",
+    excerpt:
+      "A personal account of preparing for and passing the OSCP certification...",
     content: `
       <h2>The Beginning</h2>
       <p>My journey to OSCP certification started with a strong foundation in network security...</p>
@@ -152,10 +162,7 @@ export const posts: Post[] = [
       <h2>Tips for Success</h2>
       <p>Essential advice for those preparing for their OSCP journey...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 4,
@@ -163,9 +170,11 @@ export const posts: Post[] = [
     slug: "exploiting-xss-vulnerabilities",
     date: "May 28, 2024",
     readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1526374870839-e155464bb9b2?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1526374870839-e155464bb9b2?auto=format&fit=crop&q=80",
     tags: ["Web", "Exploitation"],
-    excerpt: "A comprehensive guide to understanding and exploiting XSS vulnerabilities...",
+    excerpt:
+      "A comprehensive guide to understanding and exploiting XSS vulnerabilities...",
     content: `
       <h2>Understanding XSS</h2>
       <p>Cross-Site Scripting remains one of the most common web application vulnerabilities...</p>
@@ -183,10 +192,7 @@ export const posts: Post[] = [
       <h2>Real-world Examples</h2>
       <p>Analysis of recent XSS vulnerabilities found in major applications...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 5,
@@ -194,9 +200,11 @@ export const posts: Post[] = [
     slug: "advanced-ad-exploitation",
     date: "May 15, 2024",
     readTime: "15 min read",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80",
     tags: ["Active Directory", "Exploitation"],
-    excerpt: "Deep dive into advanced Active Directory exploitation techniques and mitigation strategies...",
+    excerpt:
+      "Deep dive into advanced Active Directory exploitation techniques and mitigation strategies...",
     content: `
       <h2>Understanding Active Directory Security</h2>
       <p>A comprehensive overview of Active Directory security mechanisms and common misconfigurations...</p>
@@ -212,10 +220,7 @@ export const posts: Post[] = [
       <h2>Detection and Prevention</h2>
       <p>Implementing effective monitoring and prevention strategies...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 6,
@@ -223,9 +228,11 @@ export const posts: Post[] = [
     slug: "aws-pentest-guide",
     date: "May 1, 2024",
     readTime: "18 min read",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80",
     tags: ["Cloud", "AWS", "Pentest"],
-    excerpt: "A comprehensive guide to performing security assessments in AWS environments...",
+    excerpt:
+      "A comprehensive guide to performing security assessments in AWS environments...",
     content: `
       <h2>AWS Security Fundamentals</h2>
       <p>Understanding AWS security models and common misconfigurations...</p>
@@ -241,10 +248,7 @@ export const posts: Post[] = [
       <h2>Best Practices</h2>
       <p>Implementing secure configurations and monitoring solutions...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 7,
@@ -252,9 +256,11 @@ export const posts: Post[] = [
     slug: "mobile-security-testing",
     date: "Apr 20, 2024",
     readTime: "14 min read",
-    image: "https://images.unsplash.com/photo-1522251670181-320150ad6dab?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1522251670181-320150ad6dab?auto=format&fit=crop&q=80",
     tags: ["Mobile", "Android", "iOS"],
-    excerpt: "Comprehensive methodology for testing mobile application security...",
+    excerpt:
+      "Comprehensive methodology for testing mobile application security...",
     content: `
       <h2>Mobile Security Fundamentals</h2>
       <p>Understanding mobile app security models and attack surfaces...</p>
@@ -270,10 +276,7 @@ export const posts: Post[] = [
       <h2>Tools and Techniques</h2>
       <p>Essential tools and methodologies for mobile app security testing...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
+    author,
   },
   {
     id: 8,
@@ -281,7 +284,8 @@ export const posts: Post[] = [
     slug: "hardware-hacking-iot",
     date: "Apr 10, 2024",
     readTime: "16 min read",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80",
     tags: ["Hardware", "IoT", "Exploitation"],
     excerpt: "Exploring hardware security vulnerabilities in IoT devices...",
     content: `
@@ -299,11 +303,24 @@ export const posts: Post[] = [
       <h2>Security Recommendations</h2>
       <p>Best practices for securing IoT devices and infrastructure...</p>
     `,
-    author: {
-      name: "Lucas de Souza",
-      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQEgRKBx-i1SWQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730906860185?e=1743033600&v=beta&t=WEPa0jEZbJ9VKQq0ZRtHO_HgZmsJuOk_smHxGfNn8wc"
-    }
-  }
+    author,
+  },
 ];
 
-export const tags = ["Active Directory", "Android", "AWS", "Bug Bounty", "Cert", "Cloud", "CVE", "Enumeration", "Exploitation", "Hardware", "iOS", "IoT", "Mobile", "Pentest", "Web"];
+export const tags = [
+  "Active Directory",
+  "Android",
+  "AWS",
+  "Bug Bounty",
+  "Cert",
+  "Cloud",
+  "CVE",
+  "Enumeration",
+  "Exploitation",
+  "Hardware",
+  "iOS",
+  "IoT",
+  "Mobile",
+  "Pentest",
+  "Web",
+];

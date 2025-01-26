@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
           {/* Social Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/lucas"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-400 transition-colors p-2"
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/lucas"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-400 transition-colors p-2"
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/lucas"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-400 transition-colors p-2"
