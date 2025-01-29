@@ -120,11 +120,14 @@ export async function getAllPosts(): Promise<Post[]> {
       Object.entries(postFiles).map(async ([path, content]) => {
         // Extrair o slug do caminho do arquivo
         const slug = path.split("/").pop()?.replace(".md", "") || "";
+
+        // Obter as estatísticas do arquivo para data de criação
+        const now = new Date();
         return {
           slug,
           content: content as string,
-          created: new Date(),
-          modified: new Date(),
+          created: now,
+          modified: now,
         };
       })
     );
@@ -139,9 +142,9 @@ export async function getAllPosts(): Promise<Post[]> {
           log("Frontmatter:", data);
           const htmlContent = marked(content);
 
-          const postDate = data.date
-            ? formatDate(new Date(data.date))
-            : formatDate(post.created);
+          // Se não houver data no frontmatter, usa a data atual
+          const postDate = data.date ? new Date(data.date) : new Date();
+          const formattedDate = formatDate(postDate);
           const readTime = calculateReadTime(content);
 
           const authorId = data.author || "guest";
@@ -153,12 +156,13 @@ export async function getAllPosts(): Promise<Post[]> {
             title: data.title || "Sem título",
             excerpt: data.excerpt || "",
             image: data.image || "",
-            date: postDate,
+            date: formattedDate,
+            timestamp: postDate.getTime(), // Adicionando timestamp para ordenação
             readTime: readTime,
             tags: Array.isArray(data.tags) ? data.tags : [],
             content: htmlContent,
             author: author,
-          } as Post;
+          } as Post & { timestamp: number };
 
           log("Post processado:", {
             slug: processedPost.slug,
@@ -172,20 +176,8 @@ export async function getAllPosts(): Promise<Post[]> {
           return null;
         }
       })
-      .filter((post): post is Post => post !== null)
-      .sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-
-        if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
-          return dateB.getTime() - dateA.getTime();
-        }
-
-        if (isNaN(dateA.getTime())) return 1;
-        if (isNaN(dateB.getTime())) return -1;
-
-        return 0;
-      });
+      .filter((post): post is Post & { timestamp: number } => post !== null)
+      .sort((a, b) => b.timestamp - a.timestamp); // Ordenando por timestamp
 
     log("Posts processados:", processedPosts.length);
     return processedPosts;
@@ -214,15 +206,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const { data, content: markdownContent } = parseFrontMatter(content);
     const htmlContent = marked(markdownContent);
 
-    const postDate = data.date
-      ? formatDate(new Date(data.date))
-      : formatDate(new Date());
+    const postDate = data.date ? new Date(data.date) : new Date();
+    const formattedDate = formatDate(postDate);
     const readTime = calculateReadTime(markdownContent);
 
     const authorId = data.author || "guest";
     const author = authors[authorId] || authors.guest;
 
-    log("Data do post individual:", postDate);
+    log("Data do post individual:", formattedDate);
     log("Tempo de leitura:", readTime);
     log("Autor:", author.name);
 
@@ -232,7 +223,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       title: data.title || "Sem título",
       excerpt: data.excerpt || "",
       image: data.image || "",
-      date: postDate,
+      date: formattedDate,
+      timestamp: postDate.getTime(),
       readTime: readTime,
       tags: Array.isArray(data.tags) ? data.tags : [],
       content: htmlContent,

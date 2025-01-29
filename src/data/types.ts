@@ -5,6 +5,7 @@ export interface Post {
   excerpt: string;
   content: string;
   date: string;
+  timestamp: number;
   readTime: string;
   image: string;
   tags: string[];
