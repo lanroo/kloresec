@@ -1,0 +1,134 @@
+/* Estilos base para o container do markdown */
+.markdown-content {
+  @apply max-w-4xl mx-auto px-4 py-8 leading-relaxed text-gray-200;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Títulos */
+.markdown-content h1 {
+  @apply text-4xl font-bold mb-8 text-white;
+  letter-spacing: -0.02em;
+}
+
+.markdown-content h2 {
+  @apply text-3xl font-semibold mt-12 mb-6 text-white;
+  letter-spacing: -0.02em;
+}
+
+.markdown-content h3 {
+  @apply text-2xl font-semibold mt-8 mb-4 text-white;
+}
+
+.markdown-content h4 {
+  @apply text-xl font-semibold mt-6 mb-3 text-white;
+}
+
+/* Parágrafos e listas */
+.markdown-content p {
+  @apply mb-6 text-lg;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-6 pl-6 text-lg;
+}
+
+.markdown-content li {
+  @apply mb-2;
+}
+
+.markdown-content ul > li {
+  @apply list-disc;
+}
+
+.markdown-content ol > li {
+  @apply list-decimal;
+}
+
+/* Links */
+.markdown-content a {
+  @apply text-blue-400 hover:text-blue-300 transition-colors duration-200;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+
+/* Blocos de código */
+.markdown-content pre {
+  @apply rounded-lg p-4 mb-6 bg-gray-900 overflow-x-auto;
+  border: 1px solid theme("colors.gray.800");
+}
+
+.markdown-content code {
+  @apply font-mono text-sm;
+}
+
+.markdown-content :not(pre) > code {
+  @apply bg-gray-800 rounded px-1.5 py-0.5 text-gray-200;
+}
+
+/* Citações */
+.markdown-content blockquote {
+  @apply pl-4 border-l-4 border-blue-500 italic my-6 text-gray-300;
+}
+
+/* Tabelas */
+.markdown-content table {
+  @apply w-full mb-6 border-collapse;
+}
+
+.markdown-content th {
+  @apply bg-gray-800 px-4 py-2 text-left font-semibold border border-gray-700;
+}
+
+.markdown-content td {
+  @apply px-4 py-2 border border-gray-700;
+}
+
+/* Imagens */
+.markdown-content img {
+  @apply rounded-lg max-w-full h-auto my-6;
+}
+
+/* Linha horizontal */
+.markdown-content hr {
+  @apply my-8 border-gray-700;
+}
+
+/* Checkbox lists */
+.markdown-content input[type="checkbox"] {
+  @apply mr-2 rounded border-gray-600;
+}
+
+/* Callouts/Notas */
+.markdown-content .note {
+  @apply bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-blue-500;
+}
+
+.markdown-content .warning {
+  @apply bg-gray-800 rounded-lg p-4 mb-6 border-l-4 border-yellow-500;
+}
+
+/* Animações suaves */
+.markdown-content * {
+  @apply transition-all duration-200;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .markdown-content {
+    @apply px-4;
+  }
+
+  .markdown-content h1 {
+    @apply text-3xl;
+  }
+
+  .markdown-content h2 {
+    @apply text-2xl;
+  }
+
+  .markdown-content h3 {
+    @apply text-xl;
+  }
+}

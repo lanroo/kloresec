@@ -1,14 +1,39 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { posts } from "../data/posts";
 import { Clock } from "lucide-react";
+import { usePosts } from "../hooks/usePosts";
 
 const TagPosts: React.FC = () => {
   const { tag } = useParams<{ tag: string }>();
+  const { posts, loading, error } = usePosts();
 
   const filteredPosts = posts.filter((post) =>
     post.tags.some((t) => t.toLowerCase() === tag?.toLowerCase())
   );
+
+  if (loading) {
+    return (
+      <div className="pt-28 min-h-[80vh]">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center">
+            <p className="text-lg text-gray-400">Carregando posts...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="pt-28 min-h-[80vh]">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center">
+            <p className="text-lg text-red-400">{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-28 min-h-[80vh]">
@@ -23,7 +48,7 @@ const TagPosts: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {filteredPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.slug}`} className="group">
+            <Link key={post.slug} to={`/blog/${post.slug}`} className="group">
               <article className="bg-black/40 backdrop-blur-sm border border-green-400/20 rounded-lg overflow-hidden transition-all duration-300 hover:border-green-400/40 hover:scale-[1.02]">
                 <div className="relative h-48 md:h-64">
                   <img

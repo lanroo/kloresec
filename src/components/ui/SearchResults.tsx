@@ -1,87 +1,121 @@
-import React from "react";
-import { useSearch } from "../../contexts/useSearch";
-import { SearchResult } from "../../contexts/types";
-import { X, Tag } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSearch } from "../../contexts/search/hooks";
+import { X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Post } from "../../data/types";
+import { getAllPosts } from "../../utils/posts";
 
 interface SearchResultsProps {
   onClose: () => void;
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({ onClose }) => {
-  const { searchResults, searchQuery } = useSearch();
-  const navigate = useNavigate();
+  const { searchTerm } = useSearch();
+  const [results, setResults] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  if (!searchQuery) return null;
+  useEffect(() => {
+    const searchPosts = async () => {
+      if (!searchTerm) {
+        setResults([]);
+        return;
+      }
 
-  const handleResultClick = (result: SearchResult) => {
-    if (result.url) {
-      navigate(result.url);
-      onClose();
-    } else if (result.element) {
-      result.element.scrollIntoView({ behavior: "smooth" });
-      onClose();
-    }
-  };
+      setLoading(true);
+      try {
+        const posts = await getAllPosts();
+        const filtered = posts.filter(
+          (post) =>
+            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            post.tags.some((tag) =>
+              tag.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        );
+        setResults(filtered);
+      } catch (error) {
+        console.error("Erro ao buscar posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    searchPosts();
+  }, [searchTerm]);
+
+  if (!searchTerm) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50">
-      <div className="container mx-auto px-4 py-16">
-        <div className="bg-black/90 border border-green-400/20 rounded-lg p-6 max-w-3xl mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold">
-              Resultados da pesquisa para "{searchQuery}"
-            </h2>
-            <button
-              onClick={onClose}
-              className="hover:text-green-400 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
+    <div className="fixed inset-0 z-45 flex items-start justify-center pt-32 sm:pt-40 md:pt-48 px-4">
+      <div className="bg-black/95 backdrop-blur-sm border border-green-400/20 rounded-lg w-full max-w-2xl shadow-lg max-h-[calc(100vh-180px)] sm:max-h-[calc(100vh-200px)] md:max-h-[calc(100vh-240px)] overflow-y-auto">
+        <div className="sticky top-0 flex items-center justify-between p-4 border-b border-green-400/20 bg-black/95 backdrop-blur-sm">
+          <h2 className="text-lg font-semibold">Resultados da busca</h2>
+          <button
+            onClick={onClose}
+            className="p-2 hover:text-green-400 transition-colors"
+            aria-label="Fechar resultados"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
 
-          {searchResults.length === 0 ? (
-            <p className="text-gray-400">Nenhum resultado encontrado.</p>
-          ) : (
-            <div className="space-y-4">
-              {searchResults.map((result, index) => (
-                <div
-                  key={index}
-                  className="p-4 border border-green-400/20 rounded-lg hover:border-green-400/40 transition-colors cursor-pointer"
-                  onClick={() => handleResultClick(result)}
-                >
-                  <h3 className="font-bold text-green-400 mb-2">
-                    {result.title}
-                  </h3>
-                  <p className="text-gray-400 mb-2">{result.content}</p>
-
-                  {result.type === "post" && result.tags && (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {result.tags.map((tag: string) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center gap-1 text-xs px-2 py-1 bg-green-400/10 rounded-full border border-green-400/20"
-                        >
-                          <Tag className="w-3 h-3" />
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="text-sm text-gray-500 mt-2">
-                    {result.type === "post"
-                      ? "Post"
-                      : result.type === "service"
-                      ? "Serviço"
-                      : "Conteúdo"}
-                  </div>
-                </div>
-              ))}
+        <div className="p-4">
+          {loading ? (
+            <div className="text-center text-gray-400">
+              <div className="animate-pulse">Buscando...</div>
             </div>
+          ) : results.length > 0 ? (
+            <ul className="space-y-4">
+              {results.map((post) => (
+                <li
+                  key={post.slug}
+                  className="border-b border-green-400/10 last:border-0 pb-4 last:pb-0"
+                >
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    onClick={onClose}
+                    className="block hover:bg-green-400/10 p-2 rounded transition-colors"
+                  >
+                    <h3 className="text-green-400 font-medium mb-1">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-2">{post.excerpt}</p>
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                      <span>{post.date}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                      {post.tags.length > 0 && (
+                        <>
+                          <span>•</span>
+                          <div className="flex flex-wrap gap-1">
+                            {post.tags.map((tag) => (
+                              <span key={tag} className="text-green-400/60">
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-center text-gray-400">
+              Nenhum resultado encontrado para "{searchTerm}"
+            </p>
           )}
         </div>
       </div>
+
+      {/* Overlay para fechar ao clicar fora */}
+      <div
+        className="fixed inset-0 bg-black/50 -z-10"
+        onClick={onClose}
+        aria-hidden="true"
+      />
     </div>
   );
 };

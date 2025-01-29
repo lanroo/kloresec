@@ -1,0 +1,96 @@
+/* Dracula Theme */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #282a36;
+  color: #f8f8f2;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: #ff79c6;
+}
+
+.hljs-function .hljs-keyword {
+  color: #8be9fd;
+}
+
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #50fa7b;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: #6272a4;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+/* Dracula específicos */
+.hljs-built_in {
+  color: #8be9fd;
+}
+
+.hljs-params {
+  color: #ff79c6;
+}
+
+.hljs-number {
+  color: #bd93f9;
+}
+
+.hljs-regexp {
+  color: #ff5555;
+}
+
+/* Melhorias de legibilidade */
+.hljs {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Linha de código */
+.hljs-line {
+  display: block;
+  padding: 0.125rem 0;
+}
+
+/* Hover em linhas */
+.hljs-line:hover {
+  background: rgba(98, 114, 164, 0.1);
+}

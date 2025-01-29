@@ -1,5 +1,5 @@
-import React from 'react';
-import { Shield, ArrowRight } from 'lucide-react';
+import React from "react";
+import { Shield, ArrowRight } from "lucide-react";
 
 const ContactSection: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const ContactSection: React.FC = () => {
         <div className="space-y-6">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Let's Talk About our{' '}
+              Let's Talk About our{" "}
               <span className="text-green-400">Cybersecurity</span> Services
             </h2>
             <p className="text-gray-400">
@@ -18,9 +18,9 @@ const ContactSection: React.FC = () => {
           <div className="relative w-full max-w-md mt-8">
             <Shield className="absolute text-green-400 w-48 h-48 opacity-10" />
             <div className="relative z-10">
-              <img 
-                src="https://res.cloudinary.com/dggewyuon/image/upload/v1737839193/am-benefits_efuzhk.svg" 
-                alt="Cybersecurity" 
+              <img
+                src="https://res.cloudinary.com/dggewyuon/image/upload/v1737839193/am-benefits_efuzhk.svg"
+                alt="Cybersecurity"
                 className="rounded-lg shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg"></div>

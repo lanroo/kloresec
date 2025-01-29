@@ -5,13 +5,14 @@ export interface SearchContextType {
 }
 
 export interface SearchResult {
-  type: "service" | "content" | "post";
+  type: "post" | "service" | "content";
   title: string;
   content: string;
-  element?: HTMLElement;
   url?: string;
   tags?: string[];
   excerpt?: string;
+  element?: HTMLElement;
+  slug?: string;
 }
 
 export interface LoadingContextType {

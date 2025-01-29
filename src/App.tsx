@@ -5,7 +5,8 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { SearchProvider } from "./contexts/SearchContext";
+import { ThemeProvider } from "./contexts/ThemeProvider";
+import { SearchProvider } from "./contexts/search/provider";
 import { TagProvider } from "./contexts/TagContext";
 import { LoadingProvider } from "./contexts/LoadingContext";
 import Navbar from "./components/layout/Navbar";
@@ -15,6 +16,14 @@ import Home from "./pages/Home";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import TagPosts from "./pages/TagPosts";
+
+// Configurar flags de futuro do React Router
+const router = {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
+  },
+};
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
@@ -37,22 +46,24 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <LoadingProvider>
-        <TagProvider>
-          <SearchProvider>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/tag/:tag" element={<TagPosts />} />
-              </Routes>
-            </Layout>
-          </SearchProvider>
-        </TagProvider>
-      </LoadingProvider>
-    </Router>
+    <ThemeProvider>
+      <Router future={router.future}>
+        <LoadingProvider>
+          <TagProvider>
+            <SearchProvider>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/tag/:tag" element={<TagPosts />} />
+                </Routes>
+              </Layout>
+            </SearchProvider>
+          </TagProvider>
+        </LoadingProvider>
+      </Router>
+    </ThemeProvider>
   );
 };
 

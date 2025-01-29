@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} {siteConfig.name}. All rights
               reserved.
             </p>
-            <p className="text-gray-400 text-sm">
+            {/* <p className="text-gray-400 text-sm">
               Developed by{" "}
               <a
                 href="https://lannadevinger.com/"
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               >
                 Deevoy
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
