@@ -4,13 +4,6 @@ import { markedHighlight } from "marked-highlight";
 import { Post } from "../data/types";
 import { authors } from "../data/authors";
 
-interface RawPost {
-  slug: string;
-  content: string;
-  created: Date;
-  modified: Date;
-}
-
 interface FrontMatterData {
   title?: string;
   excerpt?: string;
@@ -118,19 +111,25 @@ marked.use(
 export async function getAllPosts(): Promise<Post[]> {
   log("Iniciando carregamento dos posts...");
   try {
-    const response = await fetch("/posts/");
-    log("Response status:", response.status);
+    // Usando import.meta.glob para carregar os posts em tempo de build
+    const postFiles = import.meta.glob("../posts/*.md", {
+      eager: true,
+      as: "raw",
+    });
+    const posts = await Promise.all(
+      Object.entries(postFiles).map(async ([path, content]) => {
+        // Extrair o slug do caminho do arquivo
+        const slug = path.split("/").pop()?.replace(".md", "") || "";
+        return {
+          slug,
+          content: content as string,
+          created: new Date(),
+          modified: new Date(),
+        };
+      })
+    );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const posts = (await response.json()) as RawPost[];
     log("Posts carregados:", posts.length);
-
-    if (!Array.isArray(posts)) {
-      throw new Error("Invalid response format");
-    }
 
     const processedPosts = posts
       .map((post) => {
@@ -140,13 +139,11 @@ export async function getAllPosts(): Promise<Post[]> {
           log("Frontmatter:", data);
           const htmlContent = marked(content);
 
-          // Usar a data do frontmatter ou a data de criação do arquivo
           const postDate = data.date
             ? formatDate(new Date(data.date))
             : formatDate(post.created);
           const readTime = calculateReadTime(content);
 
-          // Buscar informações do autor
           const authorId = data.author || "guest";
           const author = authors[authorId] || authors.guest;
 
@@ -177,16 +174,13 @@ export async function getAllPosts(): Promise<Post[]> {
       })
       .filter((post): post is Post => post !== null)
       .sort((a, b) => {
-        // Ordenar por data do frontmatter ou data de modificação
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);
 
-        // Se ambas as datas são válidas, compara normalmente
         if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
           return dateB.getTime() - dateA.getTime();
         }
 
-        // Se uma data é inválida, coloca o post no final
         if (isNaN(dateA.getTime())) return 1;
         if (isNaN(dateB.getTime())) return -1;
 
@@ -204,23 +198,27 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   log("Carregando post:", slug);
   try {
-    const response = await fetch(`/posts/${slug}.md`);
+    const postFiles = import.meta.glob("../posts/*.md", {
+      eager: true,
+      as: "raw",
+    });
+    const postPath = Object.keys(postFiles).find((path) =>
+      path.includes(`${slug}.md`)
+    );
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!postPath) {
+      throw new Error(`Post não encontrado: ${slug}`);
     }
 
-    const content = await response.text();
+    const content = postFiles[postPath] as string;
     const { data, content: markdownContent } = parseFrontMatter(content);
     const htmlContent = marked(markdownContent);
 
-    // Usar a data do frontmatter ou gerar data automaticamente
     const postDate = data.date
       ? formatDate(new Date(data.date))
       : formatDate(new Date());
     const readTime = calculateReadTime(markdownContent);
 
-    // Buscar informações do autor
     const authorId = data.author || "guest";
     const author = authors[authorId] || authors.guest;
 

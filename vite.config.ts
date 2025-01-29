@@ -191,4 +191,12 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  assetsInclude: ["**/*.md"],
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+      },
+    },
+  },
 });
