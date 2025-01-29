@@ -23,10 +23,11 @@ interface FrontMatterData {
 }
 
 const isDev = import.meta.env.DEV;
-const baseUrl = import.meta.env.PROD ? "https://kloresec.vercel.app" : "";
 
 const log = (message: string, ...args: unknown[]) => {
-  console.log(message, ...args); // Sempre mostra logs em produção também
+  if (isDev) {
+    console.log(message, ...args);
+  }
 };
 
 // Função para calcular o tempo de leitura
@@ -117,17 +118,14 @@ marked.use(
 export async function getAllPosts(): Promise<Post[]> {
   log("Iniciando carregamento dos posts...");
   try {
-    const apiUrl = import.meta.env.PROD ? `${baseUrl}/api/posts` : "/api/posts";
-
-    log("Tentando carregar posts de:", apiUrl);
-    const response = await fetch(apiUrl);
+    const response = await fetch("/posts/");
     log("Response status:", response.status);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const posts = await response.json();
+    const posts = (await response.json()) as RawPost[];
     log("Posts carregados:", posts.length);
 
     if (!Array.isArray(posts)) {
@@ -206,23 +204,14 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   log("Carregando post:", slug);
   try {
-    const apiUrl = import.meta.env.PROD ? `${baseUrl}/api/posts` : "/api/posts";
-
-    log("Tentando carregar posts de:", apiUrl);
-    const response = await fetch(apiUrl);
+    const response = await fetch(`/posts/${slug}.md`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const posts = await response.json();
-    const post = posts.find((p: RawPost) => p.slug === slug);
-
-    if (!post) {
-      return null;
-    }
-
-    const { data, content: markdownContent } = parseFrontMatter(post.content);
+    const content = await response.text();
+    const { data, content: markdownContent } = parseFrontMatter(content);
     const htmlContent = marked(markdownContent);
 
     // Usar a data do frontmatter ou gerar data automaticamente

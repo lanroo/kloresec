@@ -1,24 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/api/posts",
-      "destination": "/api/posts.js"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "buildCommand": "npm run build",
   "installCommand": "npm install --force",
-  "framework": "vite",
-  "headers": [
-    {
-      "source": "/src/posts/:path*",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Content-Type", "value": "text/plain" }
-      ]
-    }
-  ]
+  "framework": "vite"
 }
