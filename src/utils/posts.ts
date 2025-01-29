@@ -118,7 +118,8 @@ marked.use(
 export async function getAllPosts(): Promise<Post[]> {
   log("Iniciando carregamento dos posts...");
   try {
-    const response = await fetch("/posts/");
+    const postsPath = import.meta.env.PROD ? "/src/posts/" : "/posts/";
+    const response = await fetch(postsPath);
     log("Response status:", response.status);
 
     if (!response.ok) {
@@ -204,7 +205,8 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   log("Carregando post:", slug);
   try {
-    const response = await fetch(`/posts/${slug}.md`);
+    const postsPath = import.meta.env.PROD ? "/src/posts/" : "/posts/";
+    const response = await fetch(`${postsPath}${slug}.md`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
