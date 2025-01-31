@@ -4,6 +4,7 @@ excerpt: "Arquivo para testar markdown"
 image: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&q=80"
 tags: ["oscp", "testing"]
 author: "lucas"
+date: "2025-01-04"
 ---
 
 # Exemplo de <span style="color: blue;">Markdown</span> para postagens

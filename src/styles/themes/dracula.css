@@ -1,5 +1,5 @@
 /* Dracula Theme */
-.hljs {
+.theme-dracula .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
@@ -7,90 +7,90 @@
   color: #f8f8f2;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-section,
-.hljs-link {
+.theme-dracula .hljs-keyword,
+.theme-dracula .hljs-selector-tag,
+.theme-dracula .hljs-literal,
+.theme-dracula .hljs-section,
+.theme-dracula .hljs-link {
   color: #ff79c6;
 }
 
-.hljs-function .hljs-keyword {
+.theme-dracula .hljs-function .hljs-keyword {
   color: #8be9fd;
 }
 
-.hljs-subst {
+.theme-dracula .hljs-subst {
   color: #f8f8f2;
 }
 
-.hljs-string,
-.hljs-title,
-.hljs-name,
-.hljs-type,
-.hljs-attribute,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-tag,
-.hljs-template-variable {
+.theme-dracula .hljs-string,
+.theme-dracula .hljs-title,
+.theme-dracula .hljs-name,
+.theme-dracula .hljs-type,
+.theme-dracula .hljs-attribute,
+.theme-dracula .hljs-symbol,
+.theme-dracula .hljs-bullet,
+.theme-dracula .hljs-addition,
+.theme-dracula .hljs-variable,
+.theme-dracula .hljs-template-tag,
+.theme-dracula .hljs-template-variable {
   color: #50fa7b;
 }
 
-.hljs-comment,
-.hljs-quote,
-.hljs-deletion,
-.hljs-meta {
+.theme-dracula .hljs-comment,
+.theme-dracula .hljs-quote,
+.theme-dracula .hljs-deletion,
+.theme-dracula .hljs-meta {
   color: #6272a4;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-title,
-.hljs-section,
-.hljs-doctag,
-.hljs-type,
-.hljs-name,
-.hljs-strong {
+.theme-dracula .hljs-keyword,
+.theme-dracula .hljs-selector-tag,
+.theme-dracula .hljs-literal,
+.theme-dracula .hljs-title,
+.theme-dracula .hljs-section,
+.theme-dracula .hljs-doctag,
+.theme-dracula .hljs-type,
+.theme-dracula .hljs-name,
+.theme-dracula .hljs-strong {
   font-weight: bold;
 }
 
-.hljs-emphasis {
+.theme-dracula .hljs-emphasis {
   font-style: italic;
 }
 
 /* Dracula específicos */
-.hljs-built_in {
+.theme-dracula .hljs-built_in {
   color: #8be9fd;
 }
 
-.hljs-params {
+.theme-dracula .hljs-params {
   color: #ff79c6;
 }
 
-.hljs-number {
+.theme-dracula .hljs-number {
   color: #bd93f9;
 }
 
-.hljs-regexp {
+.theme-dracula .hljs-regexp {
   color: #ff5555;
 }
 
 /* Melhorias de legibilidade */
-.hljs {
+.theme-dracula .hljs {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Linha de código */
-.hljs-line {
+.theme-dracula .hljs-line {
   display: block;
   padding: 0.125rem 0;
 }
 
 /* Hover em linhas */
-.hljs-line:hover {
+.theme-dracula .hljs-line:hover {
   background: rgba(98, 114, 164, 0.1);
 }

@@ -1,5 +1,5 @@
 /* Atom One Dark Theme */
-.hljs {
+.theme-atom-one-dark .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
@@ -7,146 +7,146 @@
   background: #282c34;
 }
 
-.hljs-keyword,
-.hljs-operator {
+.theme-atom-one-dark .hljs-keyword,
+.theme-atom-one-dark .hljs-operator {
   color: #c678dd;
 }
 
-.hljs-pattern-match {
+.theme-atom-one-dark .hljs-pattern-match {
   color: #c678dd;
 }
 
-.hljs-pattern-match .hljs-constructor {
+.theme-atom-one-dark .hljs-pattern-match .hljs-constructor {
   color: #61aeee;
 }
 
-.hljs-function {
+.theme-atom-one-dark .hljs-function {
   color: #61aeee;
 }
 
-.hljs-function .hljs-params {
+.theme-atom-one-dark .hljs-function .hljs-params {
   color: #a6b2c0;
 }
 
-.hljs-function .hljs-params .hljs-typing {
+.theme-atom-one-dark .hljs-function .hljs-params .hljs-typing {
   color: #ffd700;
 }
 
-.hljs-module-access .hljs-module {
+.theme-atom-one-dark .hljs-module-access .hljs-module {
   color: #7ec699;
 }
 
-.hljs-constructor {
+.theme-atom-one-dark .hljs-constructor {
   color: #e5c07b;
 }
 
-.hljs-constructor .hljs-string {
+.theme-atom-one-dark .hljs-constructor .hljs-string {
   color: #98c379;
 }
 
-.hljs-comment,
-.hljs-quote {
+.theme-atom-one-dark .hljs-comment,
+.theme-atom-one-dark .hljs-quote {
   color: #5c6370;
   font-style: italic;
 }
 
-.hljs-doctag,
-.hljs-formula {
+.theme-atom-one-dark .hljs-doctag,
+.theme-atom-one-dark .hljs-formula {
   color: #c678dd;
 }
 
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
+.theme-atom-one-dark .hljs-section,
+.theme-atom-one-dark .hljs-name,
+.theme-atom-one-dark .hljs-selector-tag,
+.theme-atom-one-dark .hljs-deletion,
+.theme-atom-one-dark .hljs-subst {
   color: #e06c75;
 }
 
-.hljs-literal {
+.theme-atom-one-dark .hljs-literal {
   color: #56b6c2;
 }
 
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta .hljs-string {
+.theme-atom-one-dark .hljs-string,
+.theme-atom-one-dark .hljs-regexp,
+.theme-atom-one-dark .hljs-addition,
+.theme-atom-one-dark .hljs-attribute,
+.theme-atom-one-dark .hljs-meta .hljs-string {
   color: #98c379;
 }
 
-.hljs-built_in,
-.hljs-class .hljs-title,
-.hljs-title.class_ {
+.theme-atom-one-dark .hljs-built_in,
+.theme-atom-one-dark .hljs-class .hljs-title,
+.theme-atom-one-dark .hljs-title.class_ {
   color: #e5c07b;
 }
 
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
+.theme-atom-one-dark .hljs-attr,
+.theme-atom-one-dark .hljs-variable,
+.theme-atom-one-dark .hljs-template-variable,
+.theme-atom-one-dark .hljs-type,
+.theme-atom-one-dark .hljs-selector-class,
+.theme-atom-one-dark .hljs-selector-attr,
+.theme-atom-one-dark .hljs-selector-pseudo,
+.theme-atom-one-dark .hljs-number {
   color: #d19a66;
 }
 
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
-.hljs-meta,
-.hljs-selector-id,
-.hljs-title {
+.theme-atom-one-dark .hljs-symbol,
+.theme-atom-one-dark .hljs-bullet,
+.theme-atom-one-dark .hljs-link,
+.theme-atom-one-dark .hljs-meta,
+.theme-atom-one-dark .hljs-selector-id,
+.theme-atom-one-dark .hljs-title {
   color: #61aeee;
 }
 
-.hljs-emphasis {
+.theme-atom-one-dark .hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-strong {
+.theme-atom-one-dark .hljs-strong {
   font-weight: bold;
 }
 
-.hljs-link {
+.theme-atom-one-dark .hljs-link {
   text-decoration: underline;
 }
 
 /* Melhorias visuais */
-.hljs {
+.theme-atom-one-dark .hljs {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Linha de código */
-.hljs-line {
+.theme-atom-one-dark .hljs-line {
   display: block;
   padding: 0.125rem 0;
 }
 
 /* Hover em linhas */
-.hljs-line:hover {
+.theme-atom-one-dark .hljs-line:hover {
   background: rgba(171, 178, 191, 0.1);
 }
 
 /* Realce para imports/exports */
-.hljs-meta .hljs-keyword {
+.theme-atom-one-dark .hljs-meta .hljs-keyword {
   color: #c678dd;
 }
 
 /* Realce para decorators */
-.hljs-meta .hljs-meta-string {
+.theme-atom-one-dark .hljs-meta .hljs-meta-string {
   color: #98c379;
 }
 
 /* Realce para tipos TypeScript */
-.hljs-typing {
+.theme-atom-one-dark .hljs-typing {
   color: #56b6c2;
 }
 
 /* Realce para interpolação de strings */
-.hljs-template-string .hljs-variable {
+.theme-atom-one-dark .hljs-template-string .hljs-variable {
   color: #e06c75;
 }

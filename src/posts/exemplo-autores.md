@@ -1,9 +1,10 @@
 ---
-title: "Exemplo de Post com Novo Sistema de Autores"
+title: "Ex de Post de Autores"
 excerpt: "Este é um post de exemplo mostrando como usar o novo sistema de autores"
 image: "/images/blog/testing-image.jpg"
 tags: ["exemplo", "autores"]
 author: "lucas"
+date: "2024-01-11"
 ---
 
 # Exemplo de Post com Novo Sistema de Autores

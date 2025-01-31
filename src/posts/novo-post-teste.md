@@ -1,9 +1,10 @@
 ---
-title: "Testando Sistema de Posts Automático"
+title: "Testando Posts"
 excerpt: "Este é um post para testar o sistema automático de datas e tempo de leitura"
 image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80"
 tags: ["Test", "Automatização", "Sistema"]
 author: "lucas"
+date: "2025-01-02"
 ---
 
 # Testando o Sistema Automático

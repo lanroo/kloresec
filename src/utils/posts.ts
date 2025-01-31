@@ -23,7 +23,6 @@ const log = (message: string, ...args: unknown[]) => {
   }
 };
 
-// Função para calcular o tempo de leitura
 function calculateReadTime(content: string): string {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
@@ -33,21 +32,21 @@ function calculateReadTime(content: string): string {
 
 // Função para formatar a data
 function formatDate(date: string | Date): string {
-  const d = new Date(date);
+  // Se for string e não tiver horário, adiciona meio-dia com fuso horário
+  const inputDate =
+    typeof date === "string" && !date.includes("T")
+      ? new Date(`${date}T12:00:00-03:00`)
+      : new Date(date);
 
-  // Se a data for inválida, retorna a data atual
-  if (isNaN(d.getTime())) {
-    return formatDate(new Date());
-  }
-
-  // Formatar a data no estilo "Nov 6, 2024"
+  // Formatar a data usando o locale en-US mas com timezone do Brasil
   const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Sao_Paulo",
     month: "short",
     day: "numeric",
     year: "numeric",
   });
 
-  return formatter.format(d);
+  return formatter.format(inputDate);
 }
 
 // Função para extrair o frontmatter
@@ -68,7 +67,6 @@ function parseFrontMatter(content: string): {
   const [, frontMatter, markdownContent] = match;
   const data: FrontMatterData = {};
 
-  // Parse YAML-style frontmatter
   frontMatter.split("\n").forEach((line) => {
     const [key, ...values] = line.split(":");
     if (key && values.length > 0) {
@@ -77,15 +75,22 @@ function parseFrontMatter(content: string): {
       if (value.startsWith('"') && value.endsWith('"')) {
         value = value.slice(1, -1);
       }
+
+      // Tratamento especial para datas
+      if (key.trim() === "date") {
+        // Adiciona 12:00:00 para garantir que a data fique no meio do dia
+        if (!value.includes("T")) {
+          value = `${value}T12:00:00-03:00`; // Adiciona fuso horário do Brasil
+        }
+      }
+
       // Parse arrays
       if (value.startsWith("[") && value.endsWith("]")) {
         data[key.trim()] = value
           .slice(1, -1)
           .split(",")
           .map((item) => item.trim().replace(/['"]/g, ""));
-      }
-      // Valores simples
-      else {
+      } else {
         data[key.trim()] = value;
       }
     }
@@ -100,7 +105,7 @@ function parseFrontMatter(content: string): {
 // Configurar o marked com highlight.js
 marked.use(
   markedHighlight({
-    langPrefix: "hljs language-",
+    langPrefix: "language-",
     highlight(code, lang) {
       const language = hljs.getLanguage(lang) ? lang : "plaintext";
       return hljs.highlight(code, { language }).value;
@@ -108,17 +113,22 @@ marked.use(
   })
 );
 
+// Configuração do highlight.js
+hljs.configure({
+  cssSelector: "pre code",
+  ignoreUnescapedHTML: true,
+  languages: ["typescript", "javascript", "python", "bash", "plaintext"],
+});
+
 export async function getAllPosts(): Promise<Post[]> {
   log("Iniciando carregamento dos posts...");
   try {
-    // Usando import.meta.glob para carregar os posts em tempo de build
     const postFiles = import.meta.glob("../posts/*.md", {
       eager: true,
       as: "raw",
     });
     const posts = await Promise.all(
       Object.entries(postFiles).map(async ([path, content]) => {
-        // Extrair o slug do caminho do arquivo
         const slug = path.split("/").pop()?.replace(".md", "") || "";
 
         // Obter as estatísticas do arquivo para data de criação

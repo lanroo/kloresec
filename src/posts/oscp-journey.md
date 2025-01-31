@@ -1,9 +1,10 @@
 ---
-title: "My OSCP Journey: Tips and Experiences"
+title: "My OSCP Journey"
 excerpt: "Personal experience and tips for passing the OSCP certification exam"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80"
 tags: ["OSCP", "Certification", "Penetration Testing"]
 author: "lucas"
+date: "2024-01-01"
 ---
 
 # Minha Jornada OSCP: Do Zero à Certificação

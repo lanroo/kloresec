@@ -4,6 +4,7 @@ image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format
 tags: ["Hardware", "IoT", "Security"]
 excerpt: "Exploring hardware hacking techniques and IoT device security vulnerabilities"
 author: "lucas"
+date: "2024-12-03"
 ---
 
 ## IoT Security Landscape

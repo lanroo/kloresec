@@ -4,6 +4,7 @@ excerpt: "Testing the automatic date formatting feature in our blog system"
 image: "/images/blog/testing-image.jpg"
 tags: ["Testing", "Development"]
 author: "lucas"
+date: "2025-01-22"
 ---
 
 ## Teste de Data Automática

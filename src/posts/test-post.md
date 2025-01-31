@@ -4,6 +4,7 @@ excerpt: "Este é um post de teste para verificar a formatação de data e tempo
 image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80"
 tags: ["test", "formatação"]
 author: "lucas"
+date: "2025-01-02"
 ---
 
 # Post de Teste para Formatação

@@ -1,0 +1,58 @@
+/* Definição do Tema Personalizado */
+.hljs {
+  background: #1a1b1e; /* Cor do fundo escuro */
+  color: #e6e6e6; /* Cor do texto padrão */
+}
+
+/* Palavras-chave como `const`, `async`, `new` */
+.hljs-keyword {
+  color: #ff5555;
+}
+
+/* Nomes de variáveis e funções (ex: `server`, `fetch`) */
+.hljs-variable,
+.hljs-title {
+  color: #b57edc;
+}
+
+/* Métodos e funções nativas (`Bun.serve`) */
+.hljs-built_in {
+  color: #5fd7ff;
+}
+
+/* Números (`3000`) */
+.hljs-number {
+  color: #00afff;
+}
+
+/* Strings (`"Hello World!"`) */
+.hljs-string {
+  color: #5fd7ff;
+}
+
+/* Comentários (`// configurações aqui...`) */
+.hljs-comment {
+  color: #6c7086;
+  font-style: italic;
+}
+
+/* Operadores (`=`, `:`) */
+.hljs-operator {
+  color: #ff79c6;
+}
+
+/* Objetos e classes */
+.hljs-class,
+.hljs-type {
+  color: #ffb86c;
+}
+
+/* Funções dentro de objetos (`fetch(req)`) */
+.hljs-function {
+  color: #b57edc;
+}
+
+/* Retorno (`Response(...)`) */
+.hljs-built_in {
+  color: #ff9f43;
+}

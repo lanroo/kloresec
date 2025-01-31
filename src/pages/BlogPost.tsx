@@ -13,6 +13,7 @@ import {
 import { getPostBySlug, getAllPosts } from "../utils/posts";
 import { siteConfig } from "../config/site";
 import { Post } from "../data/types";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -213,13 +214,19 @@ const BlogPost: React.FC = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 -mt-32 relative">
-        <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-green-400 hover:text-green-500 transition-colors mb-8"
-        >
-          <ArrowLeft className="w-5 h-5" />
-          Voltar
-        </button>
+        <div className="flex justify-between items-center mb-8">
+          <button
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center gap-2 text-green-400 hover:text-green-500 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Voltar
+          </button>
+          <div className="flex items-center gap-2">
+            <span className="text-gray-400">Tema do código:</span>
+            <ThemeSwitcher />
+          </div>
+        </div>
 
         <article className="prose prose-invert prose-green max-w-4xl mx-auto">
           {/* Article Header */}

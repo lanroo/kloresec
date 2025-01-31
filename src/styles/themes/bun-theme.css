@@ -1,0 +1,107 @@
+/* Bun Theme */
+.theme-bun.markdown-content pre {
+  background: #000000 !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.theme-bun.markdown-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.theme-bun.markdown-content :not(pre) > code {
+  background: #000000 !important;
+  color: #e4e4e4 !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.25rem !important;
+}
+
+.theme-bun.markdown-content .hljs {
+  color: #e4e4e4 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Palavras-chave como def, return */
+.theme-bun.markdown-content .hljs-keyword {
+  color: #ff69b4 !important;
+}
+
+/* Funções built-in como print */
+.theme-bun.markdown-content .hljs-built_in {
+  color: #00bfff !important;
+}
+
+/* Strings */
+.theme-bun.markdown-content .hljs-string {
+  color: #00ff7f !important;
+}
+
+/* Números e valores literais */
+.theme-bun.markdown-content .hljs-number,
+.theme-bun.markdown-content .hljs-literal {
+  color: #9370db !important;
+}
+
+/* Comentários */
+.theme-bun.markdown-content .hljs-comment {
+  color: #4a9eff !important;
+  font-style: italic !important;
+}
+
+/* Funções */
+.theme-bun.markdown-content .hljs-function,
+.theme-bun.markdown-content .hljs-title {
+  color: #ffd700 !important;
+}
+
+/* Parâmetros de função */
+.theme-bun.markdown-content .hljs-params {
+  color: #e4e4e4 !important;
+}
+
+/* Operadores e pontuação */
+.theme-bun.markdown-content .hljs-operator,
+.theme-bun.markdown-content .hljs-punctuation {
+  color: #ff69b4 !important;
+}
+
+/* Variáveis */
+.theme-bun.markdown-content .hljs-variable {
+  color: #e4e4e4 !important;
+}
+
+/* Tipos */
+.theme-bun.markdown-content .hljs-type {
+  color: #00bfff !important;
+}
+
+/* Hover em linhas */
+.theme-bun.markdown-content .hljs-line:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Realce para imports/exports */
+.theme-bun.markdown-content .hljs-meta .hljs-keyword {
+  color: #ff69b4 !important;
+}
+
+/* Realce para decorators */
+.theme-bun.markdown-content .hljs-meta .hljs-meta-string {
+  color: #9370db !important;
+}
+
+/* Realce para tipos */
+.theme-bun.markdown-content .hljs-typing {
+  color: #00bfff !important;
+}
+
+/* Realce para interpolação de strings */
+.theme-bun.markdown-content .hljs-template-string .hljs-variable {
+  color: #ff69b4 !important;
+}

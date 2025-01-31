@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.code-header {
+  height: 10px !important;
+  padding: 4px 12px;
+}
+
+.code-dots {
+  height: auto !important;
+  display: flex;
+  gap: 6px;
+}
+
+.code-block {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 @layer base {
   html {
     @apply overflow-x-hidden;

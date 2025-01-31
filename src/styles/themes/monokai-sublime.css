@@ -1,5 +1,5 @@
 /* Monokai Sublime Theme */
-.hljs {
+.theme-monokai-sublime .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
@@ -7,107 +7,107 @@
   color: #f8f8f2;
 }
 
-.hljs-tag,
-.hljs-subst {
+.theme-monokai-sublime .hljs-tag,
+.theme-monokai-sublime .hljs-subst {
   color: #f8f8f2;
 }
 
-.hljs-strong,
-.hljs-emphasis {
+.theme-monokai-sublime .hljs-strong,
+.theme-monokai-sublime .hljs-emphasis {
   color: #a8a8a2;
 }
 
-.hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
+.theme-monokai-sublime .hljs-bullet,
+.theme-monokai-sublime .hljs-quote,
+.theme-monokai-sublime .hljs-number,
+.theme-monokai-sublime .hljs-regexp,
+.theme-monokai-sublime .hljs-literal,
+.theme-monokai-sublime .hljs-link {
   color: #ae81ff;
 }
 
-.hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-selector-class {
+.theme-monokai-sublime .hljs-code,
+.theme-monokai-sublime .hljs-title,
+.theme-monokai-sublime .hljs-section,
+.theme-monokai-sublime .hljs-selector-class {
   color: #a6e22e;
 }
 
-.hljs-strong {
+.theme-monokai-sublime .hljs-strong {
   font-weight: bold;
 }
 
-.hljs-emphasis {
+.theme-monokai-sublime .hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
+.theme-monokai-sublime .hljs-keyword,
+.theme-monokai-sublime .hljs-selector-tag,
+.theme-monokai-sublime .hljs-name,
+.theme-monokai-sublime .hljs-attr {
   color: #f92672;
 }
 
-.hljs-symbol,
-.hljs-attribute {
+.theme-monokai-sublime .hljs-symbol,
+.theme-monokai-sublime .hljs-attribute {
   color: #66d9ef;
 }
 
-.hljs-params,
-.hljs-title.class_,
-.hljs-class .hljs-title {
+.theme-monokai-sublime .hljs-params,
+.theme-monokai-sublime .hljs-title.class_,
+.theme-monokai-sublime .hljs-class .hljs-title {
   color: #f8f8f2;
 }
 
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
+.theme-monokai-sublime .hljs-string,
+.theme-monokai-sublime .hljs-type,
+.theme-monokai-sublime .hljs-built_in,
+.theme-monokai-sublime .hljs-selector-id,
+.theme-monokai-sublime .hljs-selector-attr,
+.theme-monokai-sublime .hljs-selector-pseudo,
+.theme-monokai-sublime .hljs-addition,
+.theme-monokai-sublime .hljs-variable,
+.theme-monokai-sublime .hljs-template-variable {
   color: #e6db74;
 }
 
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
+.theme-monokai-sublime .hljs-comment,
+.theme-monokai-sublime .hljs-deletion,
+.theme-monokai-sublime .hljs-meta {
   color: #75715e;
 }
 
-/* Melhorias visuais */
-.hljs {
+/* Melhorias de legibilidade */
+.theme-monokai-sublime .hljs {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Linha de código */
-.hljs-line {
+.theme-monokai-sublime .hljs-line {
   display: block;
   padding: 0.125rem 0;
 }
 
 /* Hover em linhas */
-.hljs-line:hover {
-  background: rgba(166, 226, 46, 0.1);
+.theme-monokai-sublime .hljs-line:hover {
+  background: rgba(117, 113, 94, 0.1);
 }
 
 /* Realce especial para funções */
-.hljs-function .hljs-title {
+.theme-monokai-sublime .hljs-function .hljs-title {
   color: #a6e22e;
   font-weight: bold;
 }
 
 /* Realce para métodos */
-.hljs-method {
+.theme-monokai-sublime .hljs-method {
   color: #66d9ef;
 }
 
 /* Realce para strings especiais */
-.hljs-template-string {
+.theme-monokai-sublime .hljs-template-string {
   color: #e6db74;
   font-style: italic;
 }

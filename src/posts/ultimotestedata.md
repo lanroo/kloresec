@@ -4,6 +4,7 @@ excerpt: "Understanding and exploiting cross-site scripting vulnerabilities in w
 image: "https://images.unsplash.com/photo-1544890225-2f3faec4cd60?auto=format&fit=crop&q=80"
 tags: ["Web Security", "XSS", "Exploitation"]
 author: "lucas"
+date: "2024-01-04"
 ---
 
 ## Understanding XSS
@@ -78,7 +79,3 @@ function displayUserInput(input) {
   document.getElementById("output").textContent = encoded;
 }
 ```
-
-## Conclusion
-
-XSS vulnerabilities continue to be a significant threat to web applications. Understanding the different types, prevention techniques, and real-world examples is crucial for both developers and security professionals.

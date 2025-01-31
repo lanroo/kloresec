@@ -4,6 +4,7 @@ excerpt: "Comprehensive guide to mobile application security testing and vulnera
 image: "https://images.unsplash.com/photo-1522251670181-320150ad6dab?auto=format&fit=crop&q=80"
 tags: ["Mobile", "Security Testing", "Android", "iOS"]
 author: "lucas"
+date: "2024-01-01"
 ---
 
 ## Mobile Security Fundamentals

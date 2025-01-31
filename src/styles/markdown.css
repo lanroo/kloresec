@@ -6,7 +6,7 @@
 
 /* Títulos */
 .markdown-content h1 {
-  @apply text-4xl font-bold mb-8 text-white;
+  @apply text-4xl font-bold mb-4 text-white;
   letter-spacing: -0.02em;
 }
 
@@ -53,18 +53,13 @@
   text-underline-offset: 0.2em;
 }
 
-/* Blocos de código */
+/* Blocos de código - Removendo estilos padrão */
 .markdown-content pre {
-  @apply rounded-lg p-4 mb-6 bg-gray-900 overflow-x-auto;
-  border: 1px solid theme("colors.gray.800");
+  @apply rounded-lg mt-2 mb-4 overflow-x-auto;
 }
 
 .markdown-content code {
   @apply font-mono text-sm;
-}
-
-.markdown-content :not(pre) > code {
-  @apply bg-gray-800 rounded px-1.5 py-0.5 text-gray-200;
 }
 
 /* Citações */
