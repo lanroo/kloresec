@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ocultar titulo tema */
+span.text-gray-400 {
+  display: none;
+}
 .code-header {
   height: 10px !important;
   padding: 4px 12px;
