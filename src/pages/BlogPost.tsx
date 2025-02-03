@@ -338,7 +338,7 @@ const BlogPost: React.FC = () => {
           </div>
 
           {/* Author Bio */}
-          <div className="mt-16 bg-black/40 backdrop-blur-sm border border-green-400/20 rounded-lg p-6">
+          <div className="mt-16 mb-16 bg-black/40 backdrop-blur-sm border border-green-400/20 rounded-lg p-6">
             <div className="flex items-center gap-4 mb-4">
               <img
                 src={post.author.avatar}

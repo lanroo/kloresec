@@ -19,6 +19,7 @@
     "@shikijs/markdown-it": "^2.1.0",
     "framer-motion": "^12.0.5",
     "highlight.js": "^11.11.1",
+    "kloresec": "file:",
     "lucide-react": "^0.344.0",
     "markdown-it": "^14.1.0",
     "marked": "^15.0.6",
